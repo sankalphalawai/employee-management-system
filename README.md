@@ -11,7 +11,6 @@ This project demonstrates full **CRUD operations** (Create, Read, Update, Delete
 - View all employees in a list
 - Update employee details
 - Delete employees
-- Server-side validation (optional)
 - Integration with MySQL using Spring Data JPA
 - Thymeleaf-based views for UI
 - Hot reload support with Spring DevTools
@@ -29,7 +28,7 @@ This project demonstrates full **CRUD operations** (Create, Read, Update, Delete
 **Frontend:**
 - Thymeleaf
 - HTML5, CSS3
-- Bootstrap (if you used it)
+
 
 **Database:**
 - MySQL
