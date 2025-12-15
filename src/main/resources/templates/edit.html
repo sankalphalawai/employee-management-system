@@ -2,9 +2,164 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Edit Employee Record</title>
+
+<style>
+
+/* Background */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main card */
+.container {
+    background: white;
+    padding: 30px 50px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    width: 450px;
+}
+
+/* Heading */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Fieldset */
+fieldset {
+    border: 2px solid #ff9800;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+legend {
+    font-weight: bold;
+    font-size: 18px;
+    color: #ff9800;
+}
+
+/* Table style */
+table {
+    width: 100%;
+}
+
+td {
+    padding: 8px;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="number"],
+input[type="date"] {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 5px rgba(255,152,0,0.4);
+    outline: none;
+}
+
+/* Buttons */
+button {
+    background-color: #ff9800;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #fb8c00;
+    transform: scale(1.06);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Back button */
+a {
+    text-decoration: none;
+}
+
+.back-btn {
+    background-color: #f44336;
+}
+
+.back-btn:hover {
+    background-color: #d32f2f;
+}
+
+</style>
+
 </head>
 <body>
+
+<div class="container">
+
+    <h1>Edit Employee Record</h1>
+
+    <form action="/update" method="post"> 
+    <input type="hidden" name="id" th:value="${emp.id}">                                                                                                             
+        <fieldset>
+            <legend>Employee Details</legend>
+
+            <table>
+
+                <tr>
+                    <td><label for="name">Name</label></td>
+                    <td><input type="text" id="name" name="name"  th:value="${emp.name}" placeholder="Enter your name"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="email" id="email" name="email" th:value="${emp.email}"placeholder="Enter your email"></td>
+                </tr>
+				<tr>
+                    <td><label for="doj">Date of Joining</label></td>
+                    <td><input type="date" id="doj" name="doj"></td>
+                </tr>
+                <tr>
+                    <td><label for="mobile">Mobile</label></td>
+                    <td><input type="mobile" id="mobile" name="mobile" th:value="${emp.mobile}"placeholder="Enter your mobile"></td>
+                </tr>
+
+                
+
+                
+
+                <tr>
+                    <td colspan="2" align="center">
+                        <button type="submit">Edit</button>
+                    </td>
+                </tr>
+
+            </table>
+        </fieldset>
+    </form>
+    <br>
+    <a href="/">
+        <button type="button" class="back-btn">Back</button>
+    </a>
+</div>
 
 </body>
 </html>
