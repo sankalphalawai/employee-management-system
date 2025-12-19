@@ -1,146 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Manage Employee Records</title>
+<title>Manage Employees</title>
 
+<!-- ================= CSS SECTION ================= -->
 <style>
-/* Body */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(120deg, #a6c0fe, #f68084);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f4f6fb;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding-top: 50px;
-}
-
-/* Container */
-.container {
-    background: white;
-    padding: 30px 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-    width: 90%;
-    max-width: 900px;
+    padding: 40px;
 }
 
 /* Heading */
 h1 {
     text-align: center;
-    color: #333;
-    margin-bottom: 25px;
+    color: #1f2937;
+    margin-bottom: 30px;
+}
+
+/* Center ONLY table */
+.center-box {
+    display: flex;
+    justify-content: center;
+}
+
+/* Card */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
 }
 
 /* Table */
 table {
-    width: 100%;
     border-collapse: collapse;
-    text-align: center;
-}
-
-th, td {
-    padding: 12px 10px;
-    border-bottom: 1px solid #ddd;
+    min-width: 700px;
 }
 
 th {
-    background-color: #ff9800;
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
     color: white;
-    font-size: 16px;
+    padding: 14px;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background: #f8f9ff;
 }
 
 tr:hover {
-    background-color: #ffe0b2;
-    transition: 0.3s;
+    background: #eef2ff;
 }
 
-/* Action buttons */
+/* Buttons */
 button {
-    padding: 6px 12px;
+    padding: 7px 16px;
+    border-radius: 20px;
     border: none;
-    border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
-    transition: 0.25s;
-    margin: 0 2px;
 }
 
-button.add-btn {
-    background-color: #4caf50;
+.edit {
+    background: #22c55e;
     color: white;
 }
 
-button.add-btn:hover {
-    background-color: #45a049;
-}
-
-button.delete-btn {
-    background-color: #f44336;
+.delete {
+    background: #ef4444;
     color: white;
 }
 
-button.delete-btn:hover {
-    background-color: #d32f2f;
-}
-
-/* Back button */
-.back-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 18px;
-    background-color: #ff9800;
+.back {
+    display: block;
+    margin: 25px auto;
+    background: #9ca3af;
     color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: 0.25s;
 }
-
-.back-btn:hover {
-    background-color: #fb8c00;
-}
-
 </style>
+<!-- ================= END CSS ================= -->
 
 </head>
+
 <body>
 
+<h1>Manage Employee Records</h1>
 
-<div class="container">
+<div class="center-box">
+<div class="card">
+<table>
+<tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>DOJ</th>
+    <th>Mobile</th>
+    <th>Action</th>
+</tr>
 
-    <h1>Manage Employee Records</h1>
-
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Date of Joining</th>
-            <th>Mobile</th>
-            <th>Actions</th>
-        </tr>
-
-       
-          <tr th:each="emp:${list}">
-            <td th:text="${emp.name}"></td>
-            <td th:text="${emp.email}"></td>
-            <td th:text="${emp.doj}"></td>
-            <td th:text="${emp.mobile}"></td>
-           
-            <td>
-                <a th:href="'/edit/'+${emp.id}"><button class="add-btn">Edit</button></a>
-               <a th:href="'/delete/'+${emp.id}"> <button class="delete-btn">Delete</button></a>
-            </td>
-        </tr>
-    </table>
-    <a href="/" class="back-btn">Back</a>
+<tr th:each="emp:${list}">
+    <td th:text="${emp.name}"></td>
+    <td th:text="${emp.email}"></td>
+    <td th:text="${emp.doj}"></td>
+    <td th:text="${emp.mobile}"></td>
+    <td>
+        <a th:href="'/edit/'+${emp.id}">
+            <button class="edit">Edit</button>
+        </a>
+        <a th:href="'/delete/'+${emp.id}">
+            <button class="delete">Delete</button>
+        </a>
+    </td>
+</tr>
+</table>
 </div>
+</div>
+
+<a href="/"><button class="back">Back</button></a>
 
 </body>
 </html>

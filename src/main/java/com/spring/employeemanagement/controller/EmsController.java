@@ -14,19 +14,15 @@ import com.spring.employeemanagement.EmployeeManagementSystemApplication;
 import com.spring.employeemanagement.entity.Employee;
 import com.spring.employeemanagement.repository.EmsRepository;
 
-import ch.qos.logback.core.model.Model;
-
 
 @Controller
 public class EmsController {
 
-    private final EmployeeManagementSystemApplication employeeManagementSystemApplication;		
     @Autowired
     EmsRepository repository;
 
 
     EmsController(EmployeeManagementSystemApplication employeeManagementSystemApplication) {
-        this.employeeManagementSystemApplication = employeeManagementSystemApplication;
     }
 
 	
@@ -61,7 +57,7 @@ public class EmsController {
         return "view";  
     }
     
-    @GetMapping("/edit{id}")
+    @GetMapping("/edit/{id}")
     public String edit(@PathVariable Integer id, ModelMap map) {
     	Employee emp = repository.findById(id).get();
     	map.put("emp", emp);

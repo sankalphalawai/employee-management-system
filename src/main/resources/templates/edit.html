@@ -1,164 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Edit Employee Record</title>
+<title>Edit Employee</title>
 
+<!-- ================= CSS SECTION ================= -->
 <style>
-
-/* Background */
 body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f4f6fb;
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(120deg, #f6d365, #fda085);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Main card */
-.container {
-    background: white;
-    padding: 30px 50px;
-    border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-    width: 450px;
+    padding: 40px;
 }
 
 /* Heading */
 h1 {
     text-align: center;
-    color: #333;
-    margin-bottom: 25px;
+    color: #1f2937;
+    margin-bottom: 30px;
 }
 
-/* Fieldset */
-fieldset {
-    border: 2px solid #ff9800;
-    border-radius: 10px;
-    padding: 20px;
+/* Center ONLY form */
+.center-box {
+    display: flex;
+    justify-content: center;
 }
 
-legend {
-    font-weight: bold;
-    font-size: 18px;
-    color: #ff9800;
+/* Card */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
 }
 
-/* Table style */
+/* Table */
 table {
-    width: 100%;
+    border-collapse: collapse;
 }
 
 td {
-    padding: 8px;
+    padding: 10px;
 }
 
-/* Input fields */
-input[type="text"],
-input[type="number"],
-input[type="date"] {
-    width: 95%;
+/* Inputs */
+input {
+    width: 240px;
     padding: 8px;
-    border: 1px solid #bbb;
     border-radius: 6px;
-    font-size: 15px;
-    transition: 0.3s;
+    border: 1px solid #ccc;
 }
 
 input:focus {
-    border-color: #ff9800;
-    box-shadow: 0 0 5px rgba(255,152,0,0.4);
     outline: none;
+    border-color: #4f46e5;
 }
 
 /* Buttons */
 button {
-    background-color: #ff9800;
+    padding: 8px 18px;
+    border-radius: 20px;
     border: none;
-    padding: 10px 20px;
-    color: white;
-    font-size: 16px;
-    border-radius: 8px;
     cursor: pointer;
-    transition: 0.25s;
-    margin-top: 15px;
+    font-size: 14px;
 }
 
-button:hover {
-    background-color: #fb8c00;
-    transform: scale(1.06);
+.update {
+    background: #22c55e;
+    color: white;
 }
 
-button:active {
-    transform: scale(0.95);
+.back {
+    background: #9ca3af;
+    color: white;
 }
 
-/* Back button */
-a {
-    text-decoration: none;
+/* Button alignment */
+.btn-row {
+    text-align: center;
 }
-
-.back-btn {
-    background-color: #f44336;
-}
-
-.back-btn:hover {
-    background-color: #d32f2f;
-}
-
 </style>
+<!-- ================= END CSS ================= -->
 
 </head>
+
 <body>
 
-<div class="container">
+<h1>Edit Employee</h1>
 
-    <h1>Edit Employee Record</h1>
+<div class="center-box">
+<div class="card">
 
-    <form action="/update" method="post"> 
-    <input type="hidden" name="id" th:value="${emp.id}">                                                                                                             
-        <fieldset>
-            <legend>Employee Details</legend>
+<form action="/update" method="post">
 
-            <table>
+<input type="hidden" name="id" th:value="${emp.id}">
 
-                <tr>
-                    <td><label for="name">Name</label></td>
-                    <td><input type="text" id="name" name="name"  th:value="${emp.name}" placeholder="Enter your name"></td>
-                </tr>
+<table>
+<tr>
+    <td>Name</td>
+    <td><input type="text" name="name" th:value="${emp.name}"></td>
+</tr>
 
-                <tr>
-                    <td><label for="email">Email</label></td>
-                    <td><input type="email" id="email" name="email" th:value="${emp.email}"placeholder="Enter your email"></td>
-                </tr>
-				<tr>
-                    <td><label for="doj">Date of Joining</label></td>
-                    <td><input type="date" id="doj" name="doj"></td>
-                </tr>
-                <tr>
-                    <td><label for="mobile">Mobile</label></td>
-                    <td><input type="mobile" id="mobile" name="mobile" th:value="${emp.mobile}"placeholder="Enter your mobile"></td>
-                </tr>
+<tr>
+    <td>Email</td>
+    <td><input type="email" name="email" th:value="${emp.email}"></td>
+</tr>
 
-                
+<tr>
+    <td>Date of Joining</td>
+    <td><input type="date" name="doj" th:value="${emp.doj}"></td>
+</tr>
 
-                
+<tr>
+    <td>Mobile</td>
+    <td><input type="number" name="mobile" th:value="${emp.mobile}"></td>
+</tr>
 
-                <tr>
-                    <td colspan="2" align="center">
-                        <button type="submit">Edit</button>
-                    </td>
-                </tr>
+<tr>
+    <td colspan="2" class="btn-row">
+        <button type="submit" class="update">Update</button>
+    </td>
+</tr>
+</table>
 
-            </table>
-        </fieldset>
-    </form>
-    <br>
-    <a href="/">
-        <button type="button" class="back-btn">Back</button>
-    </a>
+</form>
+
+</div>
+</div>
+
+<div class="center-box">
+    <a href="/"><button class="back">Back</button></a>
 </div>
 
 </body>

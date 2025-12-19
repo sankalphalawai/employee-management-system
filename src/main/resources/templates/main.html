@@ -1,16 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>EMS-Portal</title>
+<title>EMS Portal</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+}
+
+h1 {
+    margin-top: 40px;
+    color: #333;
+}
+
+h2 {
+    color: green;
+}
+
+.container {
+    text-align: center;
+    margin-top: 60px;
+}
+
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    background: #1976d2;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1565c0;
+}
+</style>
+
 </head>
 <body>
-	<h1 align="center">Employee Management System</h1>
-	
-	<div align="center">
 
-	<a href="/add"><button>Add Records</button></a>
-	<a href="/manage"><button>Manage Records</button></a>
-	</div>
+<h1 align="center">Employee Management System</h1>
+<h2 align="center" th:text="${message}"></h2>
+
+<div class="container">
+    <a href="/add"><button>Add Employee</button></a>
+    <a href="/manage"><button>Manage Employees</button></a>
+</div>
+
 </body>
 </html>

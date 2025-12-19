@@ -2,40 +2,83 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Add Employee</title>
+
+<style>
+body {
+    font-family: 'Segoe UI';
+    background: #f4f6fb;
+    padding: 40px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.center-box {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    padding: 10px;
+}
+
+input {
+    width: 220px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: none;
+    background: #4f46e5;
+    color: white;
+}
+
+.back {
+    margin-top: 20px;
+    background: #9ca3af;
+}
+</style>
+
 </head>
 <body>
-	<div align="center">
-		<h1>Add Employee Records</h1>
-		
-		<form action="/add" method="post">
-		<table>
-			<tr>
-				<td><label for="name">Name :</label></td>
-				<td><input type="text" name="name" id="name" placeholder="enter the employee name"></td> 
-			</tr>
-			<tr>
-				<td><label for="email">Email :</label></td>
-				<td><input type="email" name="email" id="email" placeholder="enter the employee email"></td> 
-			</tr>
-			<tr>
-				<td><label for="doj">Date of Joining :</label></td>
-				<td><input type="date" name="doj" id="doj" placeholder="enter the employee doj"></td> 
-			</tr>
-			<tr>
-				<td><label for="mobile">Mobile No :</label></td>
-				<td><input type="number" name="mobile" id="mobile" placeholder="enter the employee number" required></td> 
-			</tr>
-			<tr>
-			<td><a href="/add"><button>Add</button></a></td>
-			</tr>
-				
-		</table>
-		</form>
-		
-		
-<a href="/"><button>Back</button></a>
-				</div>
-			
+
+<h1>Add Employee</h1>
+
+<div class="center-box">
+<div class="card">
+<form action="/add" method="post">
+<table>
+<tr><td>Name</td><td><input name="name"></td></tr>
+<tr><td>Email</td><td><input name="email"></td></tr>
+<tr><td>DOJ</td><td><input type="date" name="doj"></td></tr>
+<tr><td>Mobile</td><td><input name="mobile"></td></tr>
+</table>
+<br>
+<button>Add</button>
+</form>
+</div>
+</div>
+
+<div class="center-box">
+<a href="/"><button class="back">Back</button></a>
+</div>
+
 </body>
 </html>
